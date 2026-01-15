@@ -1,0 +1,40 @@
+baseURL = "https://ICtuvk123.github.io/"
+languageCode = "en-us"
+title = "Timothy's Blog"
+theme = "PaperMod"
+
+[params]
+    env = "production"
+    title = "Timothy's Blog"
+    description = "AI, Math, and CS Notes"
+    author = "Timothy"
+
+    ShowToc = true          # 自动生成文章目录
+    TocOpen = false         
+    math = true             # 开启 LaTeX 数学公式支持
+
+    # 首页信息
+    [params.homeInfoParams]
+        Title = "Hi there 👋"
+        Content = "Welcome to my technical blog. I focus on AI and CS. This is where I share my notes and insights."
+
+# GitHub 链接
+    [[params.socialIcons]]
+        name = "github"
+        url = "https://github.com/ICtuvk123"
+
+    # Gmail 链接
+    [[params.socialIcons]]
+        name = "email"
+        url = "mailto:zhutianci0820@gmail.com"
+
+    # 武大邮箱
+    [[params.socialIcons]]
+        name = "email"
+        url = "mailto:zhutianci@whu.edu.cn"
+
+    # QQ 链接
+    [[params.socialIcons]]
+    	name = "qq"
+    	url = "tencent://message/?uin=1283177969"
+
