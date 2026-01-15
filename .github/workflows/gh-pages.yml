@@ -1,4 +1,4 @@
-name: Deploy Hugo PaperMod Demo to Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -7,15 +7,9 @@ on:
       - "LICENSE"
       - "README.md"
     branches:
-      - master
-      - exampleSite
+      - main    # 现代仓库默认分支通常是 main
+      - master  # 兼容旧仓库
   workflow_dispatch:
-    # manual run
-    inputs:
-      hugoVersion:
-        description: "Hugo Version"
-        required: false
-        default: "0.146.0"
 
 # Allow one concurrent deployment
 concurrency:
@@ -38,7 +32,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: ${{ github.event.inputs.hugoVersion || '0.146.0' }}
+      HUGO_VERSION: '0.146.0'
     steps:
       - name: Install Hugo CLI
         run: |
@@ -47,14 +41,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: exampleSite
+          submodules: recursive  # 自动拉取主题子模块
+          fetch-depth: 0
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Get Theme
-        run: git submodule update --init --recursive
-      - name: Update theme to Latest commit
-        run: git submodule update --remote --merge
       - name: Build with Hugo
         run: |
           hugo \
