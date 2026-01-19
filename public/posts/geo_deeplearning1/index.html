@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Introduction to Geometric Deep Learning (Continued) | Timothy&#39;s Blog</title>
+<meta name="keywords" content="geometric deep learning, machine learning">
+<meta name="description" content="Group Actions
+In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\Omega$.
+We denote the group as $\mathfrak{G}$, and define the group action on the domain $\Omega$ as a map:
+$$ (\mathfrak{g},u) \mapsto \mathfrak{g}.u$$
+As one might imagine, when we apply $\mathfrak{G}$ to $\Omega$, we simultaneously obtain the action of $\mathfrak{G}$ on $\mathcal{X}(\Omega)$, given by:
+$$\mathfrak{g}.x(u) = x(\mathfrak{g}^{-1}.u)$$">
+<meta name="author" content="Timothy">
+<link rel="canonical" href="http://localhost:1313/posts/geo_deeplearning1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2dd7dd100f06b24f3d68c8d71d9065e5e0088bb70c9dac5b8f73c34ee1661edb.css" integrity="sha256-LdfdEA8Gsk89aMjXHZBl5eAIi7cMnaxbj3PDTuFmHts=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/geo_deeplearning1/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/geo_deeplearning1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        throwOnError: false
+    });"></script>
+<meta property="og:url" content="http://localhost:1313/posts/geo_deeplearning1/">
+  <meta property="og:site_name" content="Timothy&#39;s Blog">
+  <meta property="og:title" content="Introduction to Geometric Deep Learning (Continued)">
+  <meta property="og:description" content="Group Actions In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\Omega$. We denote the group as $\mathfrak{G}$, and define the group action on the domain $\Omega$ as a map: $$ (\mathfrak{g},u) \mapsto \mathfrak{g}.u$$ As one might imagine, when we apply $\mathfrak{G}$ to $\Omega$, we simultaneously obtain the action of $\mathfrak{G}$ on $\mathcal{X}(\Omega)$, given by: $$\mathfrak{g}.x(u) = x(\mathfrak{g}^{-1}.u)$$">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-17T02:53:59+08:00">
+    <meta property="article:modified_time" content="2026-01-17T02:53:59+08:00">
+    <meta property="article:tag" content="Geometric Deep Learning">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="og:image" content="http://localhost:1313/geo1/p0.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/geo1/p0.png">
+<meta name="twitter:title" content="Introduction to Geometric Deep Learning (Continued)">
+<meta name="twitter:description" content="Group Actions
+In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\Omega$.
+We denote the group as $\mathfrak{G}$, and define the group action on the domain $\Omega$ as a map:
+$$ (\mathfrak{g},u) \mapsto \mathfrak{g}.u$$
+As one might imagine, when we apply $\mathfrak{G}$ to $\Omega$, we simultaneously obtain the action of $\mathfrak{G}$ on $\mathcal{X}(\Omega)$, given by:
+$$\mathfrak{g}.x(u) = x(\mathfrak{g}^{-1}.u)$$">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Introduction to Geometric Deep Learning (Continued)",
+      "item": "http://localhost:1313/posts/geo_deeplearning1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Introduction to Geometric Deep Learning (Continued)",
+  "name": "Introduction to Geometric Deep Learning (Continued)",
+  "description": "Group Actions In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\\Omega$. We denote the group as $\\mathfrak{G}$, and define the group action on the domain $\\Omega$ as a map: $$ (\\mathfrak{g},u) \\mapsto \\mathfrak{g}.u$$ As one might imagine, when we apply $\\mathfrak{G}$ to $\\Omega$, we simultaneously obtain the action of $\\mathfrak{G}$ on $\\mathcal{X}(\\Omega)$, given by: $$\\mathfrak{g}.x(u) = x(\\mathfrak{g}^{-1}.u)$$\n",
+  "keywords": [
+    "geometric deep learning", "machine learning"
+  ],
+  "articleBody": "Group Actions In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\\Omega$. We denote the group as $\\mathfrak{G}$, and define the group action on the domain $\\Omega$ as a map: $$ (\\mathfrak{g},u) \\mapsto \\mathfrak{g}.u$$ As one might imagine, when we apply $\\mathfrak{G}$ to $\\Omega$, we simultaneously obtain the action of $\\mathfrak{G}$ on $\\mathcal{X}(\\Omega)$, given by: $$\\mathfrak{g}.x(u) = x(\\mathfrak{g}^{-1}.u)$$\nThe group actions we will encounter most frequently are linear group actions, which satisfy: $$\\mathfrak{g}.(\\alpha x + \\beta x’) = \\alpha (\\mathfrak{g}.x) + \\beta (\\mathfrak{g}.x’)$$\nCurrying Original definition: View the transformation as a function taking two arguments: $f(\\mathfrak{g},x) \\mapsto \\mathfrak{g}.x$ (input an action and a signal, output the transformed signal). After Currying: View it as a function taking only one argument $\\mathfrak{g}$, but returning another function $\\rho(\\mathfrak{g})$. This $\\rho(\\mathfrak{g})$ is specifically responsible for processing the signal $x$. Mathematically, this $\\rho$ is called a Group Representation.\nFormal Definition of Group Representation An $n$-dimensional real representation is a map $\\rho: \\mathfrak{G} \\to \\mathbb{R}^{n \\times n}$ that must satisfy the following homomorphism condition: $$\\rho(\\mathfrak{gh}) = \\rho(\\mathfrak{g})\\rho(\\mathfrak{h})$$\nThis ensures that the algebraic structure of the group (the order of actions) is perfectly preserved in matrix operations. Unitary/Orthogonal Representations: If $\\rho(\\mathfrak{g})$ is always a unitary or orthogonal matrix, the representation is called a unitary or orthogonal representation. Such representations are very important in physics and stability analysis because they preserve the norm of the signal. Thus, written in the language of group representations, the action of $\\mathfrak{G}$ on $x \\in \\mathcal{X}(\\Omega)$ can also be defined as $\\rho (\\mathfrak{g})x(u) = x(\\mathfrak{g}^{-1}.u)$.\nInvariance and Equivariant Functions Since the domain $\\Omega$ of the data distribution possesses symmetry, this provides us with a strong inductive bias, reducing the need for unnecessary interpolation.\nIf $f(\\rho(\\mathfrak{g})x) = f(x), \\forall x \\in \\mathcal{X}(\\Omega), \\mathfrak{g} \\in \\mathfrak{G}$, we say that the function $f$ is $\\mathfrak{G}$-invariant. In other words, the group action does not affect the output result.\nThe figure above clearly illustrates the relationship between group representations, symmetry groups, signals, domains, and equivariant functions.\nIf $f(\\rho(\\mathfrak{g})x) = \\rho(\\mathfrak{g})f(x), \\forall x \\in \\mathcal{X}(\\Omega), \\mathfrak{g} \\in \\mathfrak{G}$, we say that the function $f$ is $\\mathfrak{G}$-equivariant. That is, applying the group action to the input or the output makes no difference.\nTaking CNNs (Convolutional Neural Networks) as an example, let $\\mathfrak{t} \\in \\mathfrak{T}$ be a translation operator. Clearly, we have: $$conv(\\mathfrak{t} * x) = \\mathfrak{t} * conv(x)$$ This is because the convolution kernel is globally shared across translations (the convolution operation involves the kernel sliding across the image acting on pixels). Here, the convolution operation is what we call $f$, meaning $f$ is $\\mathfrak{T}$-equivariant.\nIsomorphism and Automorphism Set Level View the domain $\\Omega$ as a set. Its only attribute is “Cardinality”, i.e., how many elements are in the set. Structure-preserving map: Bijection.\nTopological Level $\\Omega$ is a topological space, and we start to care about “proximity” between points. Structure-preserving map: Homeomorphism.\nDifferential Level $\\Omega$ is a differentiable manifold. We require not only continuity but also the ability to perform calculus. Structure-preserving map: Diffeomorphism, denoted as Diff($\\Omega$).\nAs the level increases, the symmetry group becomes smaller. In fact, increasing the level is equivalent to finding subgroups (a subset satisfying group operation rules).\nDeformation Stability Stability to Signal Deformations When dealing with signals (such as images $x$), we intuitively believe that slight deformations should not change the output $f(x)$. However, we face two dilemmas in mathematical definitions:\nSmall deformations do not form a “group”: Although small deformations look like some kind of symmetry, composing multiple small deformations can result in a large deformation. Mathematically, these “small deformations” themselves do not constitute a closed transformation group.\nThe full diffeomorphism group is too strong: If we require invariance under all differentiable transformations ($Diff(\\Omega)$), this is too excessive. Because drastic deformations change the semantics of an image (e.g., stretching the digit “3” into an “8”), we do not want the model to be “unresponsive” to such drastic changes.\nTherefore, we no longer pursue absolute Invariance, but rather Geometric Stability. The core idea is: the degree of change in the output should be bounded by the “magnitude” of the deformation. $$|| f(\\rho(\\tau)x) - f(x)|| \\leq C c(\\tau) ||x||$$ $c(\\tau)$: The “complexity” or “magnitude” of the deformation. Here, we usually assume $\\tau$ is a diffeomorphism. $C$: A constant. Intuitive understanding: If the deformation $\\tau$ is very small (belonging to some symmetry subgroup $G$, such as translation, where $c(\\tau)=0$), then the output remains almost unchanged. If the deformation is large, the output is allowed to change accordingly, but we know the upper bound of this change.\nHow to measure the magnitude of deformation? (Dirichlet Energy) The second image gives a specific measurement method, namely Dirichlet energy.\nFor images defined on the Euclidean plane, if we view the deformation as a displacement field $\\tau(u)$ (i.e., point $u$ is moved to $u+\\tau(u)$), then the cost of deformation can be defined as: $$c^2(\\tau) := \\int_{\\Omega}||\\nabla\\tau(u)||^2du$$ This metric measures the Elasticity of $\\tau$. It actually measures the degree to which the deformation deviates from a “constant vector field (i.e., pure translation)”. If $\\tau$ is just a simple translation (constant displacement), $\\nabla\\tau$ is 0, so $c(\\tau)$ is 0; if $\\tau$ causes drastic local distortion in the image, $\\nabla\\tau$ will be large, leading to an increased penalty term.\nThe figure above shows the relationship between deformations of different degrees. $Aut(\\Omega)$ is the automorphism group. Requiring $\\mathfrak{G}$-invariance or $\\mathfrak{G}$-equivariance is too harsh for images and not very applicable to real-world situations. The reason we pursue geometric stability is to find a larger group $\\mathfrak{G}’$ that satisfies geometric stability.\nStability to Domain Deformations What if the domain of the data itself changes? Application scenarios:\nGraphs: Social networks add or remove relationships (edges) over time. Manifolds: A 3D character performing non-rigid motion (like bending over), where the geometric structure of its surface changes. Domain distance $d(\\Omega, \\tilde{\\Omega})$: To measure how “similar” two domains are. Metrics between domains are introduced: For graphs, Graph Edit Distance can be used. For manifolds, Gromov-Hausdorff distance can be used. Domain stability formula: Formula (5) is a generalization of signal stability: $$ |f(x, \\Omega) - f(\\tilde{x}, \\tilde{\\Omega})| \\leq C |x| d_{\\mathcal{D}}(\\Omega, \\tilde{\\Omega}) $$ This means: If two graphs or two manifold structures are very close, the results obtained by the model processing them should also be very close.\nWe will discuss stability regarding domain deformations in future posts.\nReferences Bronstein, M. M., Bruna, J., LeCun, Y., Szlam, A., \u0026 Vandergheynst, P. (2017). Geometric deep learning: going beyond Euclidean data. IEEE Signal Processing Magazine, 34(4), 18-42. Cohen, T. S., \u0026 Welling, M. (2016). Group equivariant convolutional networks. In International conference on machine learning (pp. 2990-2999). PMLR. Mallat, S. (2012). Group invariant scattering. Communications on Pure and Applied Mathematics, 65(10), 1331-1398. Kondor, R., \u0026 Trivedi, S. (2018). On the generalization of equivariance and convolution in neural networks to the action of compact groups. In International conference on machine learning (pp. 2747-2755). PMLR. ",
+  "wordCount" : "1154",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/geo1/p0.png","datePublished": "2026-01-17T02:53:59+08:00",
+  "dateModified": "2026-01-17T02:53:59+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Timothy"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/geo_deeplearning1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Timothy's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Timothy&#39;s Blog (Alt + H)">Timothy&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                    <ul class="lang-switch"><li>|</li>
+                        <li>
+                            <a href="http://localhost:1313/zh/" title="中文"
+                                aria-label="中文">Zh</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Introduction to Geometric Deep Learning (Continued)
+    </h1>
+    <div class="post-meta"><span title='2026-01-17 02:53:59 +0800 CST'>January 17, 2026</span>&nbsp;·&nbsp;<span>Timothy</span>&nbsp;|&nbsp;<span>Translations:</span>
+<ul class="i18n_list">
+    <li>
+        <a href="http://localhost:1313/zh/posts/geo_deeplearning1/">Zh</a>
+    </li>
+</ul>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:1313/geo1/p0.png" alt="">
+        
+</figure>
+  <div class="post-content"><h2 id="group-actions">Group Actions<a hidden class="anchor" aria-hidden="true" href="#group-actions">#</a></h2>
+<p>In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\Omega$.
+We denote the group as $\mathfrak{G}$, and define the group action on the domain $\Omega$ as a map:
+$$ (\mathfrak{g},u) \mapsto \mathfrak{g}.u$$
+As one might imagine, when we apply $\mathfrak{G}$ to $\Omega$, we simultaneously obtain the action of $\mathfrak{G}$ on $\mathcal{X}(\Omega)$, given by:
+$$\mathfrak{g}.x(u) = x(\mathfrak{g}^{-1}.u)$$</p>
+<p>The group actions we will encounter most frequently are linear group actions, which satisfy:
+$$\mathfrak{g}.(\alpha x + \beta x&rsquo;) = \alpha (\mathfrak{g}.x) + \beta (\mathfrak{g}.x&rsquo;)$$</p>
+<p><strong>Currying</strong>
+Original definition: View the transformation as a function taking two arguments: $f(\mathfrak{g},x) \mapsto \mathfrak{g}.x$ (input an action and a signal, output the transformed signal).
+After Currying: View it as a function taking only one argument $\mathfrak{g}$, but returning another function $\rho(\mathfrak{g})$.
+This $\rho(\mathfrak{g})$ is specifically responsible for processing the signal $x$.
+Mathematically, this $\rho$ is called a Group Representation.</p>
+<p><strong>Formal Definition of Group Representation</strong>
+An $n$-dimensional real representation is a map $\rho: \mathfrak{G} \to \mathbb{R}^{n \times n}$ that must satisfy the following <strong>homomorphism condition</strong>:
+$$\rho(\mathfrak{gh}) = \rho(\mathfrak{g})\rho(\mathfrak{h})$$</p>
+<ul>
+<li>This ensures that the algebraic structure of the group (the order of actions) is perfectly preserved in matrix operations.</li>
+<li><strong>Unitary/Orthogonal Representations</strong>: If $\rho(\mathfrak{g})$ is always a unitary or orthogonal matrix, the representation is called a unitary or orthogonal representation. Such representations are very important in physics and stability analysis because they preserve the norm of the signal.</li>
+</ul>
+<p>Thus, written in the language of group representations, the action of $\mathfrak{G}$ on $x \in \mathcal{X}(\Omega)$ can also be defined as $\rho (\mathfrak{g})x(u) = x(\mathfrak{g}^{-1}.u)$.</p>
+<h2 id="invariance-and-equivariant-functions">Invariance and Equivariant Functions<a hidden class="anchor" aria-hidden="true" href="#invariance-and-equivariant-functions">#</a></h2>
+<p>Since the domain $\Omega$ of the data distribution possesses symmetry, this provides us with a strong inductive bias, reducing the need for unnecessary interpolation.</p>
+<p>If $f(\rho(\mathfrak{g})x) = f(x), \forall x \in \mathcal{X}(\Omega), \mathfrak{g} \in \mathfrak{G}$, we say that the function $f$ is $\mathfrak{G}$-invariant. In other words, the group action does not affect the output result.</p>
+<p><img loading="lazy" src="/geo1/p1.png"></p>
+<p>The figure above clearly illustrates the relationship between group representations, symmetry groups, signals, domains, and equivariant functions.</p>
+<p>If $f(\rho(\mathfrak{g})x) = \rho(\mathfrak{g})f(x), \forall x \in \mathcal{X}(\Omega), \mathfrak{g} \in \mathfrak{G}$, we say that the function $f$ is $\mathfrak{G}$-equivariant. That is, applying the group action to the input or the output makes no difference.</p>
+<p>Taking CNNs (Convolutional Neural Networks) as an example, let $\mathfrak{t} \in \mathfrak{T}$ be a translation operator. Clearly, we have:
+$$conv(\mathfrak{t} * x) = \mathfrak{t} * conv(x)$$
+This is because the convolution kernel is globally shared across translations (the convolution operation involves the kernel sliding across the image acting on pixels). Here, the convolution operation is what we call $f$, meaning $f$ is $\mathfrak{T}$-equivariant.</p>
+<p><img loading="lazy" src="/geo1/p2.png"></p>
+<h2 id="isomorphism-and-automorphism">Isomorphism and Automorphism<a hidden class="anchor" aria-hidden="true" href="#isomorphism-and-automorphism">#</a></h2>
+<ol>
+<li>
+<p><strong>Set Level</strong>
+View the domain $\Omega$ as a set. Its only attribute is &ldquo;Cardinality&rdquo;, i.e., how many elements are in the set.
+Structure-preserving map: Bijection.</p>
+</li>
+<li>
+<p><strong>Topological Level</strong>
+$\Omega$ is a topological space, and we start to care about &ldquo;proximity&rdquo; between points.
+Structure-preserving map: Homeomorphism.</p>
+</li>
+<li>
+<p><strong>Differential Level</strong>
+$\Omega$ is a differentiable manifold. We require not only continuity but also the ability to perform calculus.
+Structure-preserving map: Diffeomorphism, denoted as Diff($\Omega$).</p>
+</li>
+</ol>
+<p>As the level increases, the symmetry group becomes smaller. In fact, increasing the level is equivalent to finding subgroups (a subset satisfying group operation rules).</p>
+<h2 id="deformation-stability">Deformation Stability<a hidden class="anchor" aria-hidden="true" href="#deformation-stability">#</a></h2>
+<h3 id="stability-to-signal-deformations">Stability to Signal Deformations<a hidden class="anchor" aria-hidden="true" href="#stability-to-signal-deformations">#</a></h3>
+<p>When dealing with signals (such as images $x$), we intuitively believe that slight deformations should not change the output $f(x)$. However, we face two dilemmas in mathematical definitions:</p>
+<p>Small deformations do not form a &ldquo;group&rdquo;: Although small deformations look like some kind of symmetry, composing multiple small deformations can result in a large deformation. Mathematically, these &ldquo;small deformations&rdquo; themselves do not constitute a closed transformation group.</p>
+<p>The full diffeomorphism group is too strong: If we require invariance under all differentiable transformations ($Diff(\Omega)$), this is too excessive. Because drastic deformations change the semantics of an image (e.g., stretching the digit &ldquo;3&rdquo; into an &ldquo;8&rdquo;), we do not want the model to be &ldquo;unresponsive&rdquo; to such drastic changes.</p>
+<p>Therefore, we no longer pursue absolute Invariance, but rather Geometric Stability. The core idea is: the degree of change in the output should be bounded by the &ldquo;magnitude&rdquo; of the deformation.
+$$|| f(\rho(\tau)x) - f(x)|| \leq C c(\tau) ||x||$$
+$c(\tau)$: The &ldquo;complexity&rdquo; or &ldquo;magnitude&rdquo; of the deformation. Here, we usually assume $\tau$ is a diffeomorphism.
+$C$: A constant.
+Intuitive understanding: If the deformation $\tau$ is very small (belonging to some symmetry subgroup $G$, such as translation, where $c(\tau)=0$), then the output remains almost unchanged. If the deformation is large, the output is allowed to change accordingly, but we know the upper bound of this change.</p>
+<p>How to measure the magnitude of deformation? (Dirichlet Energy)
+The second image gives a specific measurement method, namely Dirichlet energy.</p>
+<p>For images defined on the Euclidean plane, if we view the deformation as a displacement field $\tau(u)$ (i.e., point $u$ is moved to $u+\tau(u)$), then the cost of deformation can be defined as:
+$$c^2(\tau) := \int_{\Omega}||\nabla\tau(u)||^2du$$
+This metric measures the <strong>Elasticity</strong> of $\tau$.
+It actually measures the degree to which the deformation deviates from a &ldquo;constant vector field (i.e., pure translation)&rdquo;.
+If $\tau$ is just a simple translation (constant displacement), $\nabla\tau$ is 0, so $c(\tau)$ is 0; if $\tau$ causes drastic local distortion in the image, $\nabla\tau$ will be large, leading to an increased penalty term.</p>
+<p><img loading="lazy" src="/geo1/p3.png"></p>
+<p>The figure above shows the relationship between deformations of different degrees. $Aut(\Omega)$ is the automorphism group. Requiring $\mathfrak{G}$-invariance or $\mathfrak{G}$-equivariance is too harsh for images and not very applicable to real-world situations. The reason we pursue geometric stability is to find a larger group $\mathfrak{G}&rsquo;$ that satisfies geometric stability.</p>
+<h3 id="stability-to-domain-deformations">Stability to Domain Deformations<a hidden class="anchor" aria-hidden="true" href="#stability-to-domain-deformations">#</a></h3>
+<p>What if the domain of the data itself changes?
+Application scenarios:</p>
+<ol>
+<li>Graphs: Social networks add or remove relationships (edges) over time.</li>
+<li>Manifolds: A 3D character performing non-rigid motion (like bending over), where the geometric structure of its surface changes.
+Domain distance $d(\Omega, \tilde{\Omega})$: To measure how &ldquo;similar&rdquo; two domains are.</li>
+</ol>
+<p>Metrics between domains are introduced: For graphs, Graph Edit Distance can be used. For manifolds, Gromov-Hausdorff distance can be used.
+Domain stability formula: Formula (5) is a generalization of signal stability:
+$$ |f(x, \Omega) - f(\tilde{x}, \tilde{\Omega})| \leq C |x| d_{\mathcal{D}}(\Omega, \tilde{\Omega}) $$
+This means: If two graphs or two manifold structures are very close, the results obtained by the model processing them should also be very close.</p>
+<p>We will discuss stability regarding domain deformations in future posts.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ol>
+<li>Bronstein, M. M., Bruna, J., LeCun, Y., Szlam, A., &amp; Vandergheynst, P. (2017). Geometric deep learning: going beyond Euclidean data. <em>IEEE Signal Processing Magazine</em>, 34(4), 18-42.</li>
+<li>Cohen, T. S., &amp; Welling, M. (2016). Group equivariant convolutional networks. In <em>International conference on machine learning</em> (pp. 2990-2999). PMLR.</li>
+<li>Mallat, S. (2012). Group invariant scattering. <em>Communications on Pure and Applied Mathematics</em>, 65(10), 1331-1398.</li>
+<li>Kondor, R., &amp; Trivedi, S. (2018). On the generalization of equivariance and convolution in neural networks to the action of compact groups. In <em>International conference on machine learning</em> (pp. 2747-2755). PMLR.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/geometric-deep-learning/">Geometric Deep Learning</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Timothy&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

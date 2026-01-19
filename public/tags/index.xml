@@ -6,20 +6,27 @@
     <description>Recent content in Tags on Timothy&#39;s Blog</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Jan 2026 10:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jan 2026 02:53:59 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AI</title>
-      <link>http://localhost:1313/tags/ai/</link>
-      <pubDate>Fri, 16 Jan 2026 10:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/ai/</guid>
+      <title>Geometric Deep Learning</title>
+      <link>http://localhost:1313/tags/geometric-deep-learning/</link>
+      <pubDate>Sat, 17 Jan 2026 02:53:59 +0800</pubDate>
+      <guid>http://localhost:1313/tags/geometric-deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
       <link>http://localhost:1313/tags/machine-learning/</link>
-      <pubDate>Fri, 16 Jan 2026 10:00:00 +0800</pubDate>
+      <pubDate>Sat, 17 Jan 2026 02:53:59 +0800</pubDate>
       <guid>http://localhost:1313/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI</title>
+      <link>http://localhost:1313/tags/ai/</link>
+      <pubDate>Fri, 16 Jan 2026 10:00:00 +0800</pubDate>
+      <guid>http://localhost:1313/tags/ai/</guid>
       <description></description>
     </item>
     <item>

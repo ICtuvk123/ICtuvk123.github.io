@@ -2,19 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/zh/categories/</loc>
+    <loc>http://localhost:1313/zh/tags/geometric-deep-learning/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="http://localhost:1313/tags/geometric-deep-learning/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost:1313/zh/categories/"
+                href="http://localhost:1313/zh/tags/geometric-deep-learning/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/machine-learning/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/machine-learning/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/tags/machine-learning/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/"
                 />
   </url><url>
     <loc>http://localhost:1313/zh/tags/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -27,6 +55,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/zh/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -36,6 +65,96 @@
                 rel="alternate"
                 hreflang="zh"
                 href="http://localhost:1313/zh/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/geometric_deeplearning/</loc>
+    <lastmod>2026-01-17T02:53:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/geometric_deeplearning/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/geometric_deeplearning/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/reinforcement_learning01/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/reinforcement_learning01/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/reinforcement_learning01/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/population_method/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/population_method/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/population_method/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E7%A7%8D%E7%BE%A4%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2026-01-16T10:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/first-post/</loc>
+    <lastmod>2026-01-15T15:08:59+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/posts/first-post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/posts/first-post/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E6%AC%A2%E8%BF%8E/</loc>
+    <lastmod>2026-01-15T15:08:59+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/tags/%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2026-01-15T15:08:59+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/zh/posts/geo_deeplearning1/</loc>
+  </url><url>
+    <loc>http://localhost:1313/zh/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/zh/categories/"
                 />
   </url>
 </urlset>

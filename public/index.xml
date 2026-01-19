@@ -18,6 +18,18 @@
 &lt;p&gt;Towards the end of that century, these studies had diverged into disparate fields, with mathematicians and philosophers debating the validity of and relations between these geometries as well as the nature of the “one true geometry”.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Introduction to Geometric Deep Learning (Continued)</title>
+      <link>http://localhost:1313/posts/geo_deeplearning1/</link>
+      <pubDate>Sat, 17 Jan 2026 02:53:59 +0800</pubDate>
+      <guid>http://localhost:1313/posts/geo_deeplearning1/</guid>
+      <description>&lt;h2 id=&#34;group-actions&#34;&gt;Group Actions&lt;/h2&gt;
+&lt;p&gt;In geometric deep learning, we are often more concerned with how groups act on our data. We assume the data comes from some domain $\Omega$.
+We denote the group as $\mathfrak{G}$, and define the group action on the domain $\Omega$ as a map:
+$$ (\mathfrak{g},u) \mapsto \mathfrak{g}.u$$
+As one might imagine, when we apply $\mathfrak{G}$ to $\Omega$, we simultaneously obtain the action of $\mathfrak{G}$ on $\mathcal{X}(\Omega)$, given by:
+$$\mathfrak{g}.x(u) = x(\mathfrak{g}^{-1}.u)$$&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Introduction to Reinforcement Learning</title>
       <link>http://localhost:1313/posts/reinforcement_learning01/</link>
       <pubDate>Fri, 16 Jan 2026 10:00:00 +0800</pubDate>
